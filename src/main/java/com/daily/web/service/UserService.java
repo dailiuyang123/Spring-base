@@ -15,23 +15,18 @@ import java.util.List;
 @Transactional
 public class UserService {
 
-//    @Autowired
-//    private UserDao userDao;
+    @Autowired
+    private UserDao userDao;
 
-//    public List<User> findAll(){
-//
-////        List<User> all = userDao.findAll();
-////
-////        for (User user : all) {
-////            System.out.println(user+">>>>>>");
-////        }
-//
-//        return all;
+    public List<User> findAll() {
 
-    public String findAll(){
+        List<User> all = userDao.findAll();
 
-        System.out.println("hahahha///");
-        return "haha";
+        for (User user : all) {
+            System.out.println(user + ">>>>>>");
+        }
+
+        return all;
     }
 
 

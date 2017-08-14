@@ -16,7 +16,7 @@ public class MybatisTest {
     public static void main(String[] args) {
         System.out.println("....");
         ApplicationContext context = new ClassPathXmlApplicationContext("app-core.xml");
-        UserDao userdao = (UserDao) context.getBean("userDao");
+        UserService userdao = (UserService) context.getBean("UserService");
         List<User> all = userdao.findAll();
         for (User user : all) {
 
