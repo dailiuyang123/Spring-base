@@ -71,7 +71,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.0.17</version>
+            <version>1.0.23</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -141,6 +141,15 @@
         </dependency>
         <!-- End: spring依赖 -->
 
+
+
+        <!--freemarker依赖-->
+        <dependency>
+            <groupId>freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.6</version>
+        </dependency>
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -151,6 +160,7 @@
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
             <version>2.2</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -177,11 +187,11 @@
             <version>1.2.4</version>
         </dependency>
 
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>1.4</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>commons-codec</groupId>-->
+            <!--<artifactId>commons-codec</artifactId>-->
+            <!--<version>1.4</version>-->
+        <!--</dependency>-->
 
         <!-- Start: 百度UEditor -->
         <dependency>
@@ -213,6 +223,29 @@
     </dependencies>
 
     <build>
+        <plugins>
+            <plugin>
+            <groupId>org.apache.tomcat.maven</groupId>
+            <artifactId>tomcat7-maven-plugin</artifactId>
+            <version>2.1</version>
+            <configuration>
+                <port>8989</port>
+                <path>/SpringBase</path>
+                <uriEncoding>UTF-8</uriEncoding>
+                <server>tomcat7</server>
+            </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+
+
     <finalName>spring-base</finalName>
   </build>
 </project>
