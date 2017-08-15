@@ -71,7 +71,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.0.17</version>
+            <version>1.0.23</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -164,24 +164,32 @@
             <version>2.2.3</version>
             <classifier>jdk15</classifier>
         </dependency>
+        <!--导入freemarker相关jar-->
+        <dependency>
+            <groupId>freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.6</version>
+        </dependency>
+
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.5.3</version>
         </dependency>
-
+        <!--FastJson依赖-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.4</version>
         </dependency>
 
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>1.4</version>
-        </dependency>
+        <!-- 处理常用的编码方法的工具类包，例如DES、SHA1、MD5、Base64，URL，Soundx等等。不仅是编码，也可用于解码。
+            <dependency>-->
+            <!--<groupId>commons-codec</groupId>-->
+            <!--<artifactId>commons-codec</artifactId>-->
+            <!--<version>1.10</version>-->
+        <!--</dependency>-->
 
         <!-- Start: 百度UEditor -->
         <dependency>
@@ -214,5 +222,27 @@
 
     <build>
     <finalName>spring-base</finalName>
-  </build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <port>8181</port>
+                    <path>/SpringBase</path>
+                    <uriEncoding>UTF-8</uriEncoding>
+                    <server>tomcat7</server>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

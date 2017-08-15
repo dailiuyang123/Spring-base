@@ -6,4 +6,8 @@
   [INFO] [2017-08-14 23:58:12][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [app-core.xml]
   [INFO] [2017-08-14 23:58:14][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [db/db.properties]
   [INFO] [2017-08-14 23:58:14][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+  [INFO] [2017-08-15 09:29:39][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6f75e721: startup date [Tue Aug 15 09:29:39 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-15 09:29:40][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [app-core.xml]
+  [INFO] [2017-08-15 09:29:45][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [db/db.properties]
+  [INFO] [2017-08-15 09:29:45][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
   
