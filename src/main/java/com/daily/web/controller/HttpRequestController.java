@@ -26,6 +26,13 @@ import java.io.IOException;
 public class HttpRequestController {
 
 
+    /**
+     * 用HttpClient 模拟一个POST请求
+     * @param request
+     * @param response
+     * @return
+     */
+
     @RequestMapping(value = "/test",method = RequestMethod.POST)
     public  String  getRequest(HttpServletRequest request, HttpServletResponse response)  {
         JsonMessage jsonMessage=new JsonMessage();
@@ -45,7 +52,9 @@ public class HttpRequestController {
         HttpResponse execute=null;
         try {
              execute = httpClient.execute(post);
+            //获取结果实体
             HttpEntity entity = execute.getEntity();
+            //按指定编码转换结果实体为String类型
             body = EntityUtils.toString(entity, "utf-8");
         } catch (IOException e) {
             e.printStackTrace();
