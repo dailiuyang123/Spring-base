@@ -27,8 +27,27 @@ public class UserService {
         }
 
         return all;
+
     }
 
+    /**
+     * 查询user对象
+     * @param user
+     * @return
+     */
+    public  User selectByUser(User user){
+        User user1 = userDao.selcectbyUser(user);
+        return user1;
+    }
+
+    /**
+    *  Author: 代刘洋
+    *  Time：  2017/12/22  0:15
+    *  Title: 尝试对resultMap 的理解
+    *  Param: 
+    *  Response:    
+    *
+    */
 
 
 }
