@@ -16,6 +16,8 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
+    <!-- 开启扫描-->
+
     <!-- 引入properties -->
     <bean  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="classpath:db/db.properties"/>
@@ -41,11 +43,7 @@
     <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <!--创建mapper管理器-->
-        <property name="mapperLocations" >
-            <array>
-                <value>classpath:UserDaoMapper.xml</value>
-            </array>
-        </property>
+        <property name="mapperLocations" value="classpath*:com/daily/mybatis/mapper/*.xml" />
         <!--导入分页插件-->
         <property name="plugins">
             <array>
@@ -60,6 +58,9 @@
         </property>
 
     </bean>
+
+
+
     <!--创建dao 默认创建的实体类型为 userDao..................-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--选择dao层所在的位置-->

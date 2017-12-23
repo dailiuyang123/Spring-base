@@ -12,4 +12,6 @@ public interface UserDao {
 
     public List<User> findAll();
 
+    public  User selcectbyUser(User user);
+
 }

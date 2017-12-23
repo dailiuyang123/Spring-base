@@ -9,6 +9,9 @@
 
     </select>
 
+    <select id="selcectbyUser"  parameterType="com.daily.mybatis.entity.User" resultType="com.daily.mybatis.entity.User">
+        SELECT  *  from t_user WHERE  name=#{name} AND  password=#{password}
+    </select>
 
 
 </mapper>
