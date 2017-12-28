@@ -1,7 +1,7 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%--<%@ taglib prefix="s" uri="/struts-tags" %>--%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <LI class=fore4><A href="http://www.ehaoyao.com/" 
   target=_blank><SPAN>京东</SPAN>好药师</A> </LI></UL>
 <UL class="fr lh">
-  <LI class="fore1 ld" id=loginbar>${users.name} ！欢迎来到京东商城！<A 
+  <LI class="fore1 ld" id=loginbar>${user.name} ！欢迎来到京东商城！<A
   href="<%=path%>/login.jsp">[登录]</A>&nbsp;<A 
   href="<%=path%>/register.jsp">[免费注册]</A> </LI>
   <LI class=fore2><A 

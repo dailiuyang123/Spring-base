@@ -79,10 +79,16 @@ public class UserController {
         User newuser = userService.selectByUser(user);
         ModelAndView mv=new ModelAndView();
         if (newuser == null) {
-            mv.setViewName("/WebRoot/error");
+            String error="用户名或密码不正确";
+            mv.addObject("error",error);
+            //如果是redirect 重定向，则前端则拿不到 modelAndView 内的值
+            //并且 redirect,后的viewName必须是全路径带上jsp后缀的
+            //必须是forward 的范围才生效
+            //forward 则不用
+            mv.setViewName("redirect:/WebRoot/login.jsp");
         } else {
             mv.addObject(user);
-            mv.setViewName("/WebRoot/goods");
+            mv.setViewName("/WebRoot/index");
         }
 
         return mv;

@@ -1,5 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page language="java" contentType="text/html; UTF-8" import="java.util.*" pageEncoding="UTF-8"  isELIgnored="false"  %>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -16,17 +16,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta http-equiv="expires" content="0"/>
     <title>登录京东商城</title>
     <!-- CSS 外部样式 -->
-    <link type="text/css" rel="stylesheet" href="/JingDongSSH/css/passport.css"/>
-    <link type="text/css" rel="stylesheet" href="/JingDongSSH/css/regist00.css"/>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/WebRoot/css/passport.css"/>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/WebRoot/css/regist00.css"/>
     
     <!-- CSS 内部样式 -->
     <style type="text/css">
     	.user{width:250px;height:25px;font-size:40px;font-weight:200;color:#333;}
     	#shortcut,#li_3{background-color:#fbfbfb;border-color:red;border-bottom:1px;}
     </style>
-    
+
+
+    <script type=text/javascript>
+        if ('${error}' != '') {
+            alert('${error}');
+        }
+    </script>
+
     <!-- JavaScript 页面脚本语言  -->
     <script type="text/javascript">
+
 
 		//里面写JS脚本语言
 		
@@ -79,15 +87,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			//返回 false 表示 不提交表单
 			return false;
 		}
-		
+
     </script>
     
 </head>
-<body>		
-
-<form id="formlogin" method="post" action="users/LoginAction.action" onsubmit="return checkLogin()">
+<body>
+<h1>${error}---------------</h1>
+<form id="formlogin" method="post" action="${pageContext.request.contextPath}/user/login.do" onsubmit="return checkLogin()">
     
-    <script type="text/javascript">function login(){location.href="https://passport.360buy.com/new/login.aspx"+location.search;return false}function regist(){location.href="https://passport.360buy.com/new/registpersonal.aspx"+location.search;return false}(function(a){a.fn.Jdropdown=function(d,e){if(!this.length){return}if(typeof d=="function"){e=d;d={}}var c=a.extend({event:"mouseover",current:"hover",delay:0},d||{});var b=(c.event=="mouseover")?"mouseout":"mouseleave";a.each(this,function(){var h=null,g=null,f=false;a(this).bind(c.event,function(){if(f){clearTimeout(g)}else{var j=a(this);h=setTimeout(function(){j.addClass(c.current);f=true;if(e){e(j)}},c.delay)}}).bind(b,function(){if(f){var j=a(this);g=setTimeout(function(){j.removeClass(c.current);f=false},c.delay)}else{clearTimeout(h)}})})}})(jQuery);function addToFavorite(){var a="http://www.52itstyle.com/";var b="京东商城-网购上京东，省钱又放心";if(document.all){window.external.AddFavorite(a,b)}else if(window.sidebar){window.sidebar.addPanel(b,a,"")}else{alert("对不起，您的浏览器不支持此操作!\n请您使用菜单栏或Ctrl+D收藏本站。")}}</script>
+    <%--<script type="text/javascript">function login(){location.href="https://passport.360buy.com/new/login.aspx"+location.search;return false}function regist(){location.href="https://passport.360buy.com/new/registpersonal.aspx"+location.search;return false}(function(a){a.fn.Jdropdown=function(d,e){if(!this.length){return}if(typeof d=="function"){e=d;d={}}var c=a.extend({event:"mouseover",current:"hover",delay:0},d||{});var b=(c.event=="mouseover")?"mouseout":"mouseleave";a.each(this,function(){var h=null,g=null,f=false;a(this).bind(c.event,function(){if(f){clearTimeout(g)}else{var j=a(this);h=setTimeout(function(){j.addClass(c.current);f=true;if(e){e(j)}},c.delay)}}).bind(b,function(){if(f){var j=a(this);g=setTimeout(function(){j.removeClass(c.current);f=false},c.delay)}else{clearTimeout(h)}})})}})(jQuery);function addToFavorite(){var a="http://www.52itstyle.com/";var b="京东商城-网购上京东，省钱又放心";if(document.all){window.external.AddFavorite(a,b)}else if(window.sidebar){window.sidebar.addPanel(b,a,"")}else{alert("对不起，您的浏览器不支持此操作!\n请您使用菜单栏或Ctrl+D收藏本站。")}}</script>--%>
 <div id="shortcut">
 	<div class="w">
 		<ul class="fl lh">
@@ -154,7 +162,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <span class="label">用户名：</span>
 
                     <div class="fl">
-                        <input type="text" class="user" id="loginname" name="loginname" tabindex="1"/>
+                        <input type="text" class="user" id="loginname" name="name" tabindex="1"/>
                         <label id="loginname_succeed" class="blank invisible"></label>
                         <span class="clr"></span>
                         <label id="loginname_error"></label>
@@ -164,7 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <span class="label">密码：</span>
 
                     <div class="fl">
-                        <input type="password" id="loginpwd" name="loginpwd" class="user" tabindex="2"/>
+                        <input type="password" id="loginpwd" name="password" class="user" tabindex="2"/>
                         <label id="loginpwd_succeed" class="blank invisible"></label>
                         <label><a href="http://passport.360buy.com/retrievepassword.aspx" class="flk13">忘记密码?</a></label>
                         <span class="clr"></span>

@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function djs(){
 
 			if(n == 1){
-				window.location.href = "/JingDongSSH/goods/IndexAction";
+				window.location.href = "goods/IndexAction";
 			}
 						
 			document.getElementById("number").innerHTML = n--;

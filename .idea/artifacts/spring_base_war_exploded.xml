@@ -61,6 +61,10 @@
           <element id="library" level="project" name="Maven: org.json:json:20160810" />
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.5.2" />
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.4.4" />
+          <element id="library" level="project" name="Maven: javax.mail:mail:1.4" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: com.daily:tencent:1.0" />
+          <element id="library" level="project" name="Maven: commons-net:commons-net:3.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
