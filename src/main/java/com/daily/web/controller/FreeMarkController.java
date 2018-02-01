@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,7 +47,10 @@ public class FreeMarkController {
         //ftl模板文件统一放至 com.lun.template 包下面
         //configuration.setClassForTemplateLoading(FreeMarkController.class,"/ftl");
         try {
-        configuration.setDirectoryForTemplateLoading(new File("D:\\GitHub\\spring-base\\src\\main\\java\\com\\daily\\web\\ftl"));
+            //直接获得路径
+            String filePath1=FreeMarkController.class.getResource("/").getPath()+"templet";
+            //String filePath2="D:\\GitHub\\spring-base\\target\\classes\\templet";
+            configuration.setDirectoryForTemplateLoading(new File(filePath1));
         //获取模板
         Template template = null;
 

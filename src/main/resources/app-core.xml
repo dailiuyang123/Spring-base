@@ -31,14 +31,6 @@
         <property name="password" value="${mysql.password}"/>
     </bean>
 
-    <!--创建数举源-->
-    <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">-->
-        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver"/>-->
-        <!--<property name="url" value="jdbc:mysql://localhost:3306/daily"/>-->
-        <!--<property name="username" value="root"/>-->
-        <!--<property name="password" value="123"/>-->
-    <!--</bean>-->
-
     <!-- 创建sqlsessionfatory-->
     <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
@@ -58,8 +50,10 @@
         </property>
 
     </bean>
-
-
+   <!--配置 spring jdbc 框架 jdbcTemplet-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 
     <!--创建dao 默认创建的实体类型为 userDao..................-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

@@ -2,23 +2,20 @@ package com.daily.web.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.daily.mybatis.entity.JsonMessage;
-import com.daily.mybatis.entity.User;
 
+import com.daily.mybatis.entity.User;
 import com.daily.util.ParamUtils;
 import com.daily.web.service.UserService;
-import com.sun.org.apache.regexp.internal.RE;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,17 +43,12 @@ public class UserController {
         JsonMessage jsonMessage = new JsonMessage();
         //工具类
         Map paramMap = ParamUtils.ParamUtils(request);
-
         System.out.println(user.toString());
-        List<User> all = userService.findAll();
         Map<String, Object> map = new HashMap<String, Object>();
-        request.setAttribute("users", all);
-        map.put("user", all);
         jsonMessage.setData(map);
         String requestURI = request.getRequestURI();
         //模块和视图
         ModelAndView mv = new ModelAndView();
-
         mv.setViewName("redirect:/main/Document.jsp");
         mv.addObject("userName", "admin");
         return mv;
@@ -71,14 +63,12 @@ public class UserController {
      */
     @RequestMapping(value = "login.do", method = RequestMethod.POST)
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
-
         Map map = ParamUtils.ParamUtils(request);
         String userstring = JSONObject.toJSONString(map);
         User user = JSONObject.parseObject(userstring, User.class);
-
-        User newuser = userService.selectByUser(user);
+        User userByUser = userService.getUserByUser(user);
         ModelAndView mv=new ModelAndView();
-        if (newuser == null) {
+        if (userByUser == null) {
             String error="用户名或密码不正确";
             mv.addObject("error",error);
             //如果是redirect 重定向，则前端则拿不到 modelAndView 内的值
@@ -90,9 +80,10 @@ public class UserController {
             mv.addObject(user);
             mv.setViewName("/WebRoot/index");
         }
-
         return mv;
     }
+
+
 
 
 }
