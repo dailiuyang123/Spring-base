@@ -8,10 +8,10 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd  ">
     <!--配置注解扫描器-->
-    <context:component-scan base-package="com" use-default-filters="false">
+    <context:component-scan base-package="com.daily.web.controller" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
-
+   <!-- <context:component-scan base-package="com.daily.common.Qutarz"/>-->
     <!--配置处理器映射器          配置处理器映射器-->
     <mvc:annotation-driven/>
 

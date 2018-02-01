@@ -8,10 +8,10 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-
+ <!--spring 工厂加载初始化 bean-->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:app-core.xml</param-value>
+    <param-value>classpath:spring/spring-*.xml</param-value>
   </context-param>
 
 
