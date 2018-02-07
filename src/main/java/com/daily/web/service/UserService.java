@@ -20,7 +20,7 @@ import java.util.UUID;
 /**
  * Created by 11851 on 2017/8/13.
  */
-@Service("UserService")
+@Service
 @Transactional
 public class UserService {
 
@@ -62,23 +62,21 @@ public class UserService {
     *
     */
 
-    public void  addUser(Map paramMap) throws ValidateParamterException {
+    public void addUser(Map paramMap) throws ValidateParamterException {
         String userStr = JSONObject.toJSONString(paramMap);
         User user = JSONObject.parseObject(userStr, User.class);
         //判断用户是否存在
-        UserExample example=new UserExample();
+        UserExample example = new UserExample();
         UserExample.Criteria criteria = example.createCriteria();
         criteria.andEmailEqualTo(user.getEmail()).andReal_nameEqualTo(user.getReal_name());
         List<User> users = userMapper.selectByExample(example);
-        if(users.size()!=0){//入库
+        if (users.size() == 0) {//入库
             user.setId(IdGenUtils.UUID());
             userMapper.insertSelective(user);
-        }else {
+        } else {
             throw new ValidateParamterException("用户名或密码已被占用");
         }
     }
-
-
 
 
 

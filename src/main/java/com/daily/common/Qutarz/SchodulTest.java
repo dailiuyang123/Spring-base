@@ -7,9 +7,10 @@ import java.util.Date;
 
 /**
  * Created by Azir on 2018/2/1.
+ *  使用spring 注解实现 定时任务
  */
 
-@Component
+//@Component
 public class SchodulTest {
 
     public static  int i=0;

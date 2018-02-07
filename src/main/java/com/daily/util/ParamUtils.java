@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class ParamUtils {
 
-    public static Map ParamUtils(HttpServletRequest request) {
+    public static Map getParam(HttpServletRequest request) {
         // 参数Map
         Map properties = request.getParameterMap();
         // 返回值Map

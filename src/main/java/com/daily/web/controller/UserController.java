@@ -1,6 +1,8 @@
 package com.daily.web.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.daily.common.Constants;
+import com.daily.common.Exception.ValidateParamterException;
 import com.daily.mybatis.entity.JsonMessage;
 
 import com.daily.mybatis.entity.User;
@@ -42,7 +44,7 @@ public class UserController {
     public ModelAndView findAll(HttpServletRequest request, HttpServletResponse response, User user) {
         JsonMessage jsonMessage = new JsonMessage();
         //工具类
-        Map paramMap = ParamUtils.ParamUtils(request);
+        Map paramMap = ParamUtils.getParam(request);
         System.out.println(user.toString());
         Map<String, Object> map = new HashMap<String, Object>();
         jsonMessage.setData(map);
@@ -63,7 +65,7 @@ public class UserController {
      */
     @RequestMapping(value = "login.do", method = RequestMethod.POST)
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
-        Map map = ParamUtils.ParamUtils(request);
+        Map map = ParamUtils.getParam(request);
         String userstring = JSONObject.toJSONString(map);
         User user = JSONObject.parseObject(userstring, User.class);
         User userByUser = userService.getUserByUser(user);
@@ -83,6 +85,29 @@ public class UserController {
         return mv;
     }
 
+
+    /**
+    *  Author: 代刘洋
+    *  Time：  2018/2/3  14:51
+    *  Title:   用户注册
+    *  Param:
+    *  Response:
+    *
+    */
+
+    @RequestMapping(value = "addUser",method = RequestMethod.POST)
+    public JsonMessage addUser(HttpServletRequest request,HttpServletResponse response){
+        JsonMessage jsonMessage=new JsonMessage();
+        Map map = ParamUtils.getParam(request);
+        ModelAndView modelAndView=new ModelAndView();
+        try {
+            userService.addUser(map);
+            modelAndView.setViewName("");
+        }catch (Exception e){
+
+        }
+        return jsonMessage;
+    }
 
 
 

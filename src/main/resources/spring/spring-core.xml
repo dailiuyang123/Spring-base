@@ -12,14 +12,14 @@
 
     <!-- 开启spring注解扫描功能 -->
     <!-- 启动注解-->
-    <context:component-scan base-package="com" >
+    <context:component-scan base-package="com">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
     <!-- 开启扫描-->
 
     <!-- 引入properties -->
-    <bean  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="classpath:db/db.properties"/>
     </bean>
 
@@ -34,12 +34,12 @@
     <!-- 创建sqlsessionfatory-->
     <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <!--创建mapper管理器-->
-        <property name="mapperLocations" value="classpath*:com/daily/mybatis/mapper/ProvinceMapper.xml" />
+        <!--创建mapper管理器 -->
+        <property name="mapperLocations" value="classpath*:com/daily/mybatis/mapper/*.xml"/>
         <!--导入分页插件-->
         <property name="plugins">
             <array>
-                <bean  class="com.github.pagehelper.PageInterceptor">
+                <bean class="com.github.pagehelper.PageInterceptor">
                     <property name="properties">
                         <value>
                             helperDialect=mysql
@@ -50,7 +50,7 @@
         </property>
 
     </bean>
-   <!--配置 spring jdbc 框架 jdbcTemplet-->
+    <!--配置 spring jdbc 框架 jdbcTemplet-->
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"/>
     </bean>
@@ -66,7 +66,6 @@
     <!--创建事物管理器-->
     <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
-
     </bean>
 
     <!--配置注解使生效-->
