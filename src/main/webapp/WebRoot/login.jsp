@@ -162,7 +162,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <span class="label">用户名：</span>
 
                     <div class="fl">
-                        <input type="text" class="user" id="loginname" name="name" tabindex="1"/>
+                        <input type="text" class="user" id="loginname" name="real_name" tabindex="1"/>
                         <label id="loginname_succeed" class="blank invisible"></label>
                         <span class="clr"></span>
                         <label id="loginname_error"></label>

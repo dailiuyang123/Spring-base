@@ -206,11 +206,6 @@
             <version>1.2.4</version>
         </dependency>
 
-        <!--<dependency>-->
-        <!--<groupId>commons-codec</groupId>-->
-        <!--<artifactId>commons-codec</artifactId>-->
-        <!--<version>1.4</version>-->
-        <!--</dependency>-->
 
         <!-- Start: 百度UEditor -->
         <dependency>
@@ -281,12 +276,30 @@
             <type>jar</type>
         </dependency>
 
-        <!--<dependency>-->
-        <!--<groupId>com.baidu.ueditor</groupId>-->
-        <!--<artifactId>ueditor</artifactId>-->
-        <!--<version>20160310</version>-->
-        <!--</dependency>-->
-        <!--&lt;!&ndash; End: 百度UEditor &ndash;&gt;-->
+        <!--POI 文件导出-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.xmlbeans</groupId>
+            <artifactId>xmlbeans</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.1</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -321,10 +334,13 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.1</version>
                 <configuration>
+                    <url>http://192.168.221.128:8080/manager/text</url>    <!--  配置远程tomcat的路劲 -->
+                    <!--本地服务的端口-->
                     <port>8989</port>
+                    <username>admin</username>
+                    <password>123456</password>
+                    <update>true</update>
                     <path>/${project.artifactId}</path>
-                    <uriEncoding>UTF-8</uriEncoding>
-                    <server>tomcat7</server>
                 </configuration>
             </plugin>
             <plugin>
@@ -354,6 +370,7 @@
                 <includes>
                     <include>**/*.ftl</include>
                     <include>**/*.xml</include>
+                    <include>**/*.xlsx</include>
                     <include>**/*.properties</include>
                 </includes>
             </resource>

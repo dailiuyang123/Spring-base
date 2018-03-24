@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <LI class=fore4><A href="http://www.ehaoyao.com/" 
   target=_blank><SPAN>京东</SPAN>好药师</A> </LI></UL>
 <UL class="fr lh">
-  <LI class="fore1 ld" id=loginbar>${user.name} ！欢迎来到京东商城！<A
+  <LI class="fore1 ld" id=loginbar>${user.real_name} ！欢迎来到京东商城！<A
   href="<%=path%>/login.jsp">[登录]</A>&nbsp;<A 
   href="<%=path%>/register.jsp">[免费注册]</A> </LI>
   <LI class=fore2><A 
