@@ -5,9 +5,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,16 +17,16 @@ public class FileUtils {
 
 
     /**
-    *  Author: 代刘洋
-    *  Time：  2018/1/29  23:27
-    *  Title:     FileUpload
-    *  Param:
-    *  Response:
-    *  文件上传功能
-    */
+     * Author: 代刘洋
+     * Time：  2018/1/29  23:27
+     * Title:     FileUpload
+     * Param:
+     * Response:
+     * 文件上传功能
+     */
 
-    public Map FileUpload(HttpServletRequest request){
-        Map paramMap=new HashMap();
+    public Map FileUpload(HttpServletRequest request) {
+        Map paramMap = new HashMap();
         //文件上传
         //得到上传文件的保存目录，将上传的文件存放于WEB-INF目录下，不允许外界直接访问，保证上传文件的安
         String savePath = this.getClass().getResource("/").getPath();
@@ -51,9 +49,9 @@ public class FileUtils {
             //解决上传文件名的中文乱码
             upload.setHeaderEncoding("UTF-8");
             //3、判断提交上来的数据是否是上传表单的数据
-            if(!ServletFileUpload.isMultipartContent(request)){
+            if (!ServletFileUpload.isMultipartContent(request)) {
                 //按照传统方式获取数据
-                return  null ;
+                return null;
             }
             //4、使用ServletFileUpload解析器解析上传数据，解析结果返回的是一个List<FileItem>集合，每一个FileItem对应一个Form表单的输入项
 
@@ -61,19 +59,19 @@ public class FileUtils {
             for (FileItem fileItem : list) {
                 //得到上传的文件名称
                 //判断是否是文件
-                if (fileItem.isFormField()){
+                if (fileItem.isFormField()) {
                     //不是文件数据
-                }else {
+                } else {
                     String fileName = fileItem.getName();
-                    paramMap.put("fileName",fileName);
+                    paramMap.put("fileName", fileName);
                     System.out.println(fileName);
-                    if(fileName==null || fileName.trim().equals("")){
+                    if (fileName == null || fileName.trim().equals("")) {
                         continue;
                     }
 
                     //注意：不同的浏览器提交的文件名是不一样的，有些浏览器提交上来的文件名是带有路径的，如：  c:\a\b\1.txt，而有些只是单纯的文件名，如：1.txt
                     //处理获取到的上传文件的文件名的路径部分，只保留文件名部分
-                    fileName = fileName.substring(fileName.lastIndexOf("\\")+1);
+                    fileName = fileName.substring(fileName.lastIndexOf("\\") + 1);
                     //获取item中的上传文件的输入流
                     InputStream in = fileItem.getInputStream();
                     //创建一个文件输出流
@@ -98,10 +96,47 @@ public class FileUtils {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            String message="文件上传失败！";
+            String message = "文件上传失败！";
         }
-       return paramMap;
+        return paramMap;
     }
+
+    /**
+    *  Author: 代刘洋
+    *  Time：  2018/3/31  9:59
+    *  Title:
+    *  Param:
+    *  Response:
+    *   读流
+    */
+    public static byte[] readFromStream(InputStream in) {
+        BufferedInputStream bufin = new BufferedInputStream(in);
+        int buffSize = 1024;
+        ByteArrayOutputStream out = new ByteArrayOutputStream(buffSize);
+        byte[] temp = new byte[buffSize];
+
+        try {
+            int size = 0;
+            while ((size = bufin.read(temp)) != -1) {
+                out.write(temp, 0, size);
+            }
+
+            return out.toByteArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                out.close();
+                bufin.close();
+                bufin.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return null;
+    }
+
 
 
 }
