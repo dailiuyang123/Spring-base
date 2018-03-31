@@ -28,7 +28,16 @@
     <filter-name>characterEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+<!--自定义拦截器-->
+  <filter>
+    <filter-name>isPower</filter-name>
+    <filter-class>com.daily.common.filter.PowerFilter</filter-class>
+  </filter>
 
+  <filter-mapping>
+    <filter-name>isPower</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
   <!--加载spring工厂-->
   <listener>
@@ -46,6 +55,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>springmvc</servlet-name>
+    <!--不拦截 静态资源-->
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
